@@ -1,7 +1,7 @@
 #!/bin/sh
-SERVICE_NAME=MyService
-PATH_TO_JAR=/usr/local/MyProject/MyJar.jar
-PID_PATH_NAME=/tmp/MyService-pid
+SERVICE_NAME=lpx2hue_bridge
+PATH_TO_JAR=/usr/local/lpx2hue/lpx2hue.jar
+PID_PATH_NAME=/tmp/lpx2hue-pid
 case $1 in
     start)
         echo "Starting $SERVICE_NAME ..."
