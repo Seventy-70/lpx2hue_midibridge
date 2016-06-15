@@ -149,10 +149,10 @@ public class Lpx2Hue {
                 try {
                     if (recordLightTrigger && recordLightOn) {
                         System.out.println("Received RECORDING LIGHT ON from LPX ...");
-                        Lpx2Hue.switchOnHueLight();
+                        HueBridgeController.switchOnHueLight();
                     } else if (recordLightTrigger && !recordLightOn) {
                         System.out.println("Received RECORDING LIGHT OFF from LPX ...");
-                        Lpx2Hue.switchOffHueLight();
+                        HueBridgeController.switchOffHueLight();
                     }
                 } catch (Exception e){
                     e.printStackTrace();
@@ -185,49 +185,10 @@ public class Lpx2Hue {
 
 		JFrame frame = new JFrame();
 
-
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 
 	}
 
-    private static void switchOnHueLight() throws IOException {
-        CloseableHttpClient client = HttpClientBuilder.create().build();
-        HttpPut request = new HttpPut("http://localhost:4772/api/newdeveloper/lights/1/state");
-        CloseableHttpResponse response;
-        System.out.println("Send light on request to Hue");
-        try {
-            StringEntity input = new StringEntity("{\"on\": true,\"hue\": 65000,\"sat\": 254}");
-            input.setContentType("application/json");
 
-            request.setEntity(input);
-
-            response = client.execute(request);
-
-
-        } catch (Exception e){
-            e.printStackTrace();
-        } finally {
-            client.close();
-        }
-    }
-
-    private static void switchOffHueLight() throws IOException {
-        CloseableHttpClient client = HttpClientBuilder.create().build();
-        HttpPut request = new HttpPut("http://localhost:4772/api/newdeveloper/lights/1/state");
-        CloseableHttpResponse response;
-        System.out.println("Send light off request to Hue");
-        try {
-            StringEntity input = new StringEntity("{\"on\": true,\"hue\": 30000,\"sat\": 254}");
-            input.setContentType("application/json");
-
-            request.setEntity(input);
-
-            response = client.execute(request);
-        } catch (Exception e){
-            e.printStackTrace();
-        } finally {
-            client.close();
-        }
-    }
 }
