@@ -10,13 +10,13 @@ import javax.sound.midi.MidiUnavailableException;
  * is to have separate ones for input and output. This is why the devices are further subclasses into MidiInputDevice and MidiOutputDevice.
  * 
  * You can pass an object when creating an input. Common methods implemented by this object will be registered with the MidiInput. These methods
- * are noteOnReceived(Note), noteOffReceived(Note), controllerChangeReceived(Controller), programChangeReceived(ProgramChange) and
+ * are noteOnReceived(Note), noteOffReceived(Note), controllerChangeReceived(ControlChange), programChangeReceived(ProgramChange) and
  * sysexReceived(SysexMessage). An additional channel can be given to filter out a specific channel for note and controller change messages.
  * 
  */
 public class MidiDevice {
-	javax.sound.midi.MidiDevice.Info info;
-	javax.sound.midi.MidiDevice device;
+	private javax.sound.midi.MidiDevice.Info info;
+	private javax.sound.midi.MidiDevice device;
 	
 	/**
 	 * Create a Midi Device from a java MidiDeviceInfo structure. This should not be used unless you know what you are doing.

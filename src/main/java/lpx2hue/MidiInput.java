@@ -4,11 +4,8 @@ import java.util.ArrayList;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiMessage;
-import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
-import javax.sound.midi.ShortMessage;
-import javax.sound.midi.SysexMessage;
 import javax.sound.midi.Transmitter;
 
 /**
@@ -35,7 +32,6 @@ public class MidiInput implements Receiver {
         trsmt.setReceiver(this);
         plugList = new ArrayList<Plug>();
         currentMessage = new ArrayList();
-        System.out.println("Foo");
     }
 
     protected MidiInput(MidiInputDevice _device) throws MidiUnavailableException {
@@ -184,7 +180,7 @@ public class MidiInput implements Receiver {
 
     /**
      * Register an object with standard midi callbacks on all channels. The callbacks are noteOnReceived(Note),
-     * noteOffReceived(Note), controllerChangeReceived(Controller), programChangeReceived(ProgramChange) and
+     * noteOffReceived(Note), controllerChangeReceived(ControlChange), programChangeReceived(ProgramChange) and
      * sysexReceived(SysexMessage).
      *
      * @param obj the object with standard callbacks
@@ -195,7 +191,7 @@ public class MidiInput implements Receiver {
 
     /**
      * Register an object with standard midi callbacks on a specific channels. The callbacks are noteOnReceived(Note),
-     * noteOffReceived(Note), controllerChangeReceived(Controller), programChangeReceived(ProgramChange) and
+     * noteOffReceived(Note), controllerChangeReceived(ControlChange), programChangeReceived(ProgramChange) and
      * sysexReceived(SysexMessage).
      *
      * @param obj     the object with standard callbacks

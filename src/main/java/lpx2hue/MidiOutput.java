@@ -71,10 +71,10 @@ public class MidiOutput {
 	}
 	
 	/**
-	 * Send a Controller change message on this output.
+	 * Send a ControlChange change message on this output.
 	 * @param channel Channel on which to send the message
-	 * @param cc Controller Change number
-	 * @param value Controller Change value
+	 * @param cc ControlChange Change number
+	 * @param value ControlChange Change value
 	 * @return 1 on success, 0 on error
 	 */
 	public int sendController(int channel, int cc, int value) {
