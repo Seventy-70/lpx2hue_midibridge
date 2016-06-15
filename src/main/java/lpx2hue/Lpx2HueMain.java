@@ -1,6 +1,12 @@
 package lpx2hue;
 
 
+import lpx2hue.handlers.Lpx2HueEventHandler;
+import lpx2hue.iodevice.MidiDevice;
+import lpx2hue.iodevice.MidiInput;
+import lpx2hue.iodevice.MidiInputDevice;
+import lpx2hue.iodevice.MidiOutputDevice;
+
 import java.util.ArrayList;
 
 import javax.sound.midi.MidiSystem;
@@ -8,6 +14,7 @@ import javax.sound.midi.MidiUnavailableException;
 import javax.swing.JFrame;
 
 import static java.lang.System.exit;
+import static java.lang.Thread.sleep;
 
 /**
  * Lpx2HueMain is a class containing static methods to get a list of the available MIDI devices.
@@ -80,12 +87,10 @@ public class Lpx2HueMain {
 	 */
 	public static MidiOutputDevice getOutputDevice(String name) {
 		MidiOutputDevice[] devices = getOutputDevices();
-
 		for (MidiOutputDevice device : devices) {
 			if (name.equals(device.getName()))
 				return device;
 		}
-
 		return null;
 	}
 
@@ -109,20 +114,17 @@ public class Lpx2HueMain {
 	 */
 	public static MidiInputDevice getInputDevice(String name) {
 		MidiInputDevice[] devices = getInputDevices();
-
 		for (MidiInputDevice device : devices) {
 			if (name.equals(device.getName()))
 				return device;
 		}
-
 		return null;
 	}
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws InterruptedException {
 
         System.out.println("LPX2HUE Midi Bridge startup...");
         System.out.println("List of all MidiSystem Input & Output Devices:");
-
 
 		int i = 0;
         MidiInputDevice selectedInputDevice = null;
@@ -145,17 +147,18 @@ public class Lpx2HueMain {
             Lpx2HueEventHandler handler = new Lpx2HueEventHandler();
             MidiInput input = selectedInputDevice.createInput(handler);
 
+            JFrame frame = new JFrame();
+            System.out.println("LPX2HUE Midi Bridge startup completed. Listening to events...");
+
             // do something to hold the program
             // TODO: make program deamon
-            JFrame frame = new JFrame();
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
-            System.out.println("LPX2HUE Midi Bridge startup completed. Listening to events...");
+            while(true){
+                sleep(10000);
+            }
+
         } else {
             System.out.println("Failed to connect to midi input device with name: 'LPX2HUE_MB'. Please check your Midi Studio IAC driver setup." );
             exit(0);
         }
 	}
-
-
 }

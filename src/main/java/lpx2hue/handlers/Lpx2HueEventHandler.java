@@ -1,4 +1,9 @@
-package lpx2hue;
+package lpx2hue.handlers;
+
+import lpx2hue.events.ControlChange;
+import lpx2hue.events.Note;
+import lpx2hue.events.SysexMessage;
+import lpx2hue.hue.HueBridgeController;
 
 /**
  * Created by nijhora1 on 15/06/16.
@@ -8,9 +13,7 @@ public class Lpx2HueEventHandler {
 
     Lpx2HueEventHandler() {}
 
-    void controller(ControlChange ctrlr) { System.out.println("control change: " + ctrlr);}
-
-    void noteOnReceived(Note note) {
+    public void noteOnReceived(Note note) {
 
         boolean recordLightTrigger = false;
 
@@ -35,11 +38,11 @@ public class Lpx2HueEventHandler {
         }
     }
 
-    void noteOffReceived(Note note) {
+    public void noteOffReceived(Note note) {
         System.out.println("note off " + note);
     }
 
-    void sysexReceived(SysexMessage msg) {
+    public void sysexReceived(SysexMessage msg) {
         System.out.println("sysex " + msg);
     }
 }

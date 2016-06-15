@@ -1,4 +1,6 @@
-package lpx2hue;
+package lpx2hue.events;
+
+import lpx2hue.iodevice.MidiInput;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiMessage;
@@ -20,7 +22,7 @@ public class MidiEvent extends ShortMessage {
 
     MidiInput input = null;
 
-    protected MidiEvent(byte[] data) {
+    public MidiEvent(byte[] data) {
         super(data);
     }
 
@@ -44,7 +46,7 @@ public class MidiEvent extends ShortMessage {
         return input;
     }
 
-    void setInput(MidiInput _input) {
+    public void setInput(MidiInput _input) {
         input = _input;
     }
 
@@ -76,7 +78,7 @@ public class MidiEvent extends ShortMessage {
         data[2] = (byte) (_data2 & 0xFF);
     }
 
-    protected static MidiEvent create(MidiMessage msg) {
+    public static MidiEvent create(MidiMessage msg) {
         if (msg instanceof javax.sound.midi.SysexMessage)
             return new SysexMessage((javax.sound.midi.SysexMessage) msg);
         else if (msg instanceof ShortMessage) {

@@ -1,4 +1,6 @@
-package lpx2hue;
+package lpx2hue.iodevice;
+
+import lpx2hue.events.MidiEvent;
 
 import java.lang.reflect.Method;
 
@@ -9,7 +11,7 @@ import javax.sound.midi.ShortMessage;
  * Wrapper class for callback plugs. You don't usually need to access this class.
  */
 
-class Plug {
+public class Plug {
     private final Method method;
     private final String methodName;
     private final Object object;
@@ -67,7 +69,7 @@ class Plug {
         throw new RuntimeException("Error on plug: >" + methodName + "< Invalid argument class");
     }
 
-    void callPlug(MidiInput _input, final MidiMessage msg) {
+    public void callPlug(MidiInput _input, final MidiMessage msg) {
         try {
             if ((msg.getStatus() & 0xF0) != getStatus() && getStatus() != -1)
                 return;

@@ -1,4 +1,6 @@
-package lpx2hue;
+package lpx2hue.iodevice;
+
+import lpx2hue.events.MidiEvent;
 
 import java.util.ArrayList;
 

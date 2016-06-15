@@ -1,7 +1,9 @@
-package lpx2hue;
+package lpx2hue.iodevice;
+
+import lpx2hue.events.SysexMessage;
+import lpx2hue.events.MidiEvent;
 
 import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Receiver;
 import javax.sound.midi.ShortMessage;

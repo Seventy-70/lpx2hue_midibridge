@@ -1,4 +1,6 @@
-package lpx2hue;
+package lpx2hue.events;
+
+import lpx2hue.events.MidiEvent;
 
 import javax.sound.midi.ShortMessage;
 

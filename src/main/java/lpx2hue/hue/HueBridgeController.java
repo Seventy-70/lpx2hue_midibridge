@@ -1,4 +1,4 @@
-package lpx2hue;
+package lpx2hue.hue;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPut;

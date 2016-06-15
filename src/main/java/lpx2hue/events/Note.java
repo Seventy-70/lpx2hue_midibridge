@@ -1,11 +1,13 @@
-package lpx2hue;
+package lpx2hue.events;
+
+import lpx2hue.events.MidiEvent;
 
 /**
  * Wrapper around Note MIDI messages. You can extract the pitch using the {@Link Note-getPitch} and the velocity using
  * {@Link Note-getVelocity}.
  *
  */
-public class Note extends MidiEvent{
+public class Note extends MidiEvent {
 	/**
 	 * Create a Note object.
 	 * @param i_pitch the pitch of the note

@@ -1,6 +1,7 @@
-package lpx2hue;
+package lpx2hue.events;
 
-import java.io.BufferedOutputStream;
+import lpx2hue.events.MidiEvent;
+
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -9,7 +10,7 @@ import java.io.Writer;
  * This is a wrapper around a SysexMessage. You can access the bytes using getMessage(). 
  */
 public class SysexMessage extends MidiEvent {
-	protected SysexMessage(javax.sound.midi.SysexMessage msg) {
+	public SysexMessage(javax.sound.midi.SysexMessage msg) {
 		super(msg);
 	}
 	

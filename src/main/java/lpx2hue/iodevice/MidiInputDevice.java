@@ -1,4 +1,4 @@
-package lpx2hue;
+package lpx2hue.iodevice;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.MidiDevice.Info;
@@ -10,7 +10,7 @@ import javax.sound.midi.MidiDevice.Info;
  */
 public class MidiInputDevice extends MidiDevice {
 
-	MidiInputDevice(Info _info) {
+	public MidiInputDevice(Info _info) {
 		super(_info);
 	}
 

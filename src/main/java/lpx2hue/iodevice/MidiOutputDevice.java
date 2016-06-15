@@ -1,4 +1,4 @@
-package lpx2hue;
+package lpx2hue.iodevice;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.MidiDevice.Info;
