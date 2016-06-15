@@ -11,7 +11,7 @@ import lpx2hue.hue.HueBridgeController;
 public class Lpx2HueEventHandler {
     boolean recordLightOn = false;
 
-    Lpx2HueEventHandler() {}
+    public Lpx2HueEventHandler() {}
 
     public void noteOnReceived(Note note) {
 
