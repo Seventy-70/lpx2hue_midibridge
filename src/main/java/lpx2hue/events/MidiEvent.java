@@ -26,11 +26,11 @@ public class MidiEvent extends ShortMessage {
         super(data);
     }
 
-    MidiEvent(final MidiMessage _midiMessage) {
+    public MidiEvent(final MidiMessage _midiMessage) {
         this(_midiMessage.getMessage());
     }
 
-    MidiEvent(int command, int number, int value) {
+    public MidiEvent(int command, int number, int value) {
         this(new byte[]{(byte) NOTE_ON, 0, 0});
         try {
             setMessage(command | midiChannel, number, value);

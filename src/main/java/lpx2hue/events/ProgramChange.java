@@ -1,7 +1,5 @@
 package lpx2hue.events;
 
-import lpx2hue.events.MidiEvent;
-
 import javax.sound.midi.ShortMessage;
 
 /**
@@ -27,6 +25,6 @@ public class ProgramChange extends MidiEvent {
 	}
 	
 	public String toString() {
-		return "rwmidi.ProgramChange " + getNumber();
+		return "ProgramChange " + getNumber();
 	}
 }
