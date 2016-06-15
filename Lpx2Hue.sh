@@ -1,5 +1,5 @@
 #!/bin/sh
-SERVICE_NAME=lpx2hue_bridge
+SERVICE_NAME=lpx2hue_midibridge
 PATH_TO_JAR=/usr/local/lpx2hue/lpx2hue.jar
 PID_PATH_NAME=/tmp/lpx2hue-pid
 case $1 in
