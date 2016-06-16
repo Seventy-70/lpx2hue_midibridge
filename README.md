@@ -27,8 +27,31 @@ Validated on Mac OSX 10.11.5 El Capitan, and with Logic Pro X 10.2.3, and Philip
 - The left side of the dialog shows the setup properties
 - In the output port select 'LPX2HUE_MB' which has been create in step 1
 
-## 3) Configure the lpx2hue_midibridge component
-- run the program, which lists the input devices, select the input with name: LPX2HUE_MB
+## 3) Install lpx2hue bridge as OSX deamon
+- create 'lpx2hue' app folder in ~ (user home)
+- copy 2 files: "**.jar", "application.properties" from 'dist' folder into 'lpx2hue' folder
+- copy 'lpx2hue.Lpx2HueBridge.plist' file into '~/Library/LaunchAgents' folder
+
+## 4) - configure 'application.properties' within 'lpx2hue' folder
+
+## 5) - confiure '*.plist' within '~/Library/LaunchAgents' folder
+
+## 6) load application deamon
+- when restarting macbook, the service deamon should start automatically
+
+To manually unload the deamon
+- from console: 'launchctl unload -w ~/Library/LaunchAgents/lpx2hue.Lpx2HueBridge.plist'
+
+To manually load the deamon
+- from console: 'launchctl load -w ~/Library/LaunchAgents/lpx2hue.Lpx2HueBridge.plist'
+
+To check the deamon is loaded
+- from console: 'launchctl list | grep lpx', this should output something like:
+$ launchctl list | grep lpx
+4784	0	lpx2hue.Lpx2HueBridge
+$
+
+
 - ... more steps to follow
   - endpoint of HUE bridge
   - name of IAC port
