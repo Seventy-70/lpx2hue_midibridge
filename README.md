@@ -37,7 +37,7 @@ Validated on Mac OSX 10.11.5 El Capitan, and with Logic Pro X 10.2.3, and Philip
 ## 5) confiure '*.plist' within '~/Library/LaunchAgents' folder
 
 ## 6) load application deamon
-- when restarting macbook, the service deamon should start automatically
+When restarting macbook, the service deamon should start automatically
 
 To manually unload the deamon
 - from console: 'launchctl unload -w ~/Library/LaunchAgents/lpx2hue.Lpx2HueBridge.plist'
