@@ -53,8 +53,6 @@ public class Lpx2HueBridge {
         if (selectedInputDevice!=null){
             Lpx2HueEventHandler handler = new Lpx2HueEventHandler(context);
             MidiInput input = selectedInputDevice.createInput(handler);
-
-            JFrame frame = new JFrame();
             System.out.println("LPX2HUE Midi Bridge startup completed. Listening to events...");
 
             while(true){
