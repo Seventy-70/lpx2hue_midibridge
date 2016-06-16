@@ -53,10 +53,7 @@ $
 
 
 - ... more steps to follow
-  - endpoint of HUE bridge
-  - name of IAC port
-  - specify HUE user
-  - define control lights / groups
+
 
 
 
