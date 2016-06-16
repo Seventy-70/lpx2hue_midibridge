@@ -32,7 +32,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>lpx2hue.Lpx2HueMain</mainClass>
+                                    <mainClass>lpx2hue.Lpx2HueBridge</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

@@ -1,12 +1,12 @@
 #!/bin/sh
 SERVICE_NAME=lpx2hue_midibridge
-PATH_TO_JAR=/usr/local/lpx2hue/lpx2hue.jar
+PATH_TO_JAR=lpx2hue_midibridge-1.0.1-SNAPSHOT.jar
 PID_PATH_NAME=/tmp/lpx2hue-pid
 case $1 in
     start)
         echo "Starting $SERVICE_NAME ..."
         if [ ! -f $PID_PATH_NAME ]; then
-            nohup java -jar $PATH_TO_JAR /tmp 2>> /dev/null >> /dev/null &
+            nohup java -cp .:$PATH_TO_JAR lpx2hue.Lpx2HueMain /tmp 2>> /dev/null >> /dev/null &
                         echo $! > $PID_PATH_NAME
             echo "$SERVICE_NAME started ..."
         else
@@ -16,7 +16,7 @@ case $1 in
     stop)
         if [ -f $PID_PATH_NAME ]; then
             PID=$(cat $PID_PATH_NAME);
-            echo "$SERVICE_NAME stoping ..."
+            echo "$SERVICE_NAME stopping ..."
             kill $PID;
             echo "$SERVICE_NAME stopped ..."
             rm $PID_PATH_NAME
@@ -32,7 +32,7 @@ case $1 in
             echo "$SERVICE_NAME stopped ...";
             rm $PID_PATH_NAME
             echo "$SERVICE_NAME starting ..."
-            nohup java -jar $PATH_TO_JAR /tmp 2>> /dev/null >> /dev/null &
+            nohup java -cp .:$PATH_TO_JAR lpx2hue.Lpx2HueMain 2>> /dev/null >> /dev/null &
                         echo $! > $PID_PATH_NAME
             echo "$SERVICE_NAME started ..."
         else

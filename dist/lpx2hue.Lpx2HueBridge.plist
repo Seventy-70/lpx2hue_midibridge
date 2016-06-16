@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC -//Apple Computer//DTD PLIST 1.0//EN
+http://www.apple.com/DTDs/PropertyList-1.0.dtd >
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>lpx2hue.Lpx2HueBridge</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>/usr/bin/java</string>
+            <string>-cp</string>
+            <string>.:lpx2hue_midibridge-1.0.1-SNAPSHOT.jar</string>
+            <string>lpx2hue.Lpx2HueBridge</string>
+        </array>
+        <key>OnDemand</key>
+        <true/>
+        <key>RunAtLoad</key>
+        <true/>
+        <key>KeepAlive</key>
+        <false/>
+        <!-- MODIFY FOR YOUR ENVIRONMENT -->
+        <key>StandardErrorPath</key>
+        <string>/Users/nijhora1/dev/tmp/lpx2hue/err.log</string>
+        <key>StandardOutPath</key>
+        <string>/Users/nijhora1/dev/tmp/lpx2hue/out.log</string>
+        <key>WorkingDirectory</key>
+        <string>/Users/nijhora1/dev/tmp/lpx2hue</string>
+    </dict>
+</plist>

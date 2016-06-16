@@ -1,6 +1,5 @@
 package lpx2hue.hue;
 
-import lpx2hue.beans.ApplicationContextProvider;
 import lpx2hue.beans.HueSettings;
 import lpx2hue.beans.RecordingLightSettings;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -10,7 +9,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
