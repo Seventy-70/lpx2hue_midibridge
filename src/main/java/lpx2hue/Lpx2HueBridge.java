@@ -60,7 +60,6 @@ public class Lpx2HueBridge {
             while(true){
                 sleep(10000);
             }
-
         } else {
             System.out.println("Failed to connect to midi input device with name: "+ midiSettings.getInput()+". Please check your Midi Studio IAC driver setup." );
             exit(0);
