@@ -133,7 +133,7 @@ public class Lpx2HueBridge {
 	}
 
 	public static void main(String args[]) throws InterruptedException {
-
+		System.setProperty("apple.awt.UIElement", "true");
         System.out.println("LPX2HUE Midi Bridge startup...");
         System.out.println("List of all MidiSystem Input & Output Devices:");
 
