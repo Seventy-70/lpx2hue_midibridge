@@ -14,7 +14,6 @@ public class Lpx2HueEventHandler {
     public Lpx2HueEventHandler() {}
 
     public void noteOnReceived(Note note) {
-
         boolean recordLightTrigger = false;
 
         if ((note.getPitch()==25) && note.getVelocity()==127) {
@@ -28,10 +27,10 @@ public class Lpx2HueEventHandler {
         try {
             if (recordLightTrigger && recordLightOn) {
                 System.out.println("Received RECORDING LIGHT ON from LPX ...");
-                HueBridgeController.switchOnHueLight();
+                (new HueBridgeController()).switchOnHueLight();
             } else if (recordLightTrigger && !recordLightOn) {
                 System.out.println("Received RECORDING LIGHT OFF from LPX ...");
-                HueBridgeController.switchOffHueLight();
+                (new HueBridgeController()).switchOffHueLight();
             }
         } catch (Exception e){
             e.printStackTrace();

@@ -1,54 +1,75 @@
 package lpx2hue.hue;
 
+import lpx2hue.beans.ApplicationContextProvider;
+import lpx2hue.beans.HueSettings;
+import lpx2hue.beans.RecordingLightSettings;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 
 /**
  * Created by nijhora1 on 15/06/16.
  */
+
 public class HueBridgeController {
 
-    public static void switchOnHueLight() throws IOException {
+    private HueSettings hs;
+    private RecordingLightSettings rls;
+    private String lightResource;
+
+
+    private ApplicationContext context;
+
+    public HueBridgeController(){
+        hs = ApplicationContextProvider.getApplicationContext().getBean("HueSettings", HueSettings.class);
+        rls = ApplicationContextProvider.getApplicationContext().getBean("RecordingLightSettings", RecordingLightSettings.class);
+        lightResource = hs.getBridgeAddress()+hs.getUser()+hs.getLight();
+    }
+
+    public void switchOnHueLight() throws IOException {
         CloseableHttpClient client = HttpClientBuilder.create().build();
-        HttpPut request = new HttpPut("http://localhost:4772/api/newdeveloper/lights/1/state");
-        CloseableHttpResponse response;
+        HttpPut request = new HttpPut(lightResource);
+        CloseableHttpResponse response = null;
         System.out.println("Send light on request to Hue");
         try {
-            StringEntity input = new StringEntity("{\"on\": true,\"hue\": 65000,\"sat\": 254}");
+            StringEntity input = new StringEntity("{\"on\": true,\"hue\": "+rls.getOnHue()+",\"sat\": "+rls.getOnSat()+"}");
             input.setContentType("application/json");
-
             request.setEntity(input);
-
             response = client.execute(request);
-
-
         } catch (Exception e){
             e.printStackTrace();
         } finally {
+            if (response!=null)
+                response.close();
             client.close();
         }
     }
 
-    public static void switchOffHueLight() throws IOException {
+    public void switchOffHueLight() throws IOException {
         CloseableHttpClient client = HttpClientBuilder.create().build();
-        HttpPut request = new HttpPut("http://localhost:4772/api/newdeveloper/lights/1/state");
-        CloseableHttpResponse response;
+        HttpPut request = new HttpPut(lightResource);
+        CloseableHttpResponse response = null;
         System.out.println("Send light off request to Hue");
         try {
-            StringEntity input = new StringEntity("{\"on\": true,\"hue\": 30000,\"sat\": 254}");
+            StringEntity input = new StringEntity("{\"on\": true,\"hue\": "+rls.getOffHue()+",\"sat\": "+rls.getOffSat()+"}");
             input.setContentType("application/json");
-
             request.setEntity(input);
 
             response = client.execute(request);
         } catch (Exception e){
             e.printStackTrace();
         } finally {
+            if (response!=null)
+                response.close();
             client.close();
         }
     }

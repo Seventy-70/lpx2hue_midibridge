@@ -1,11 +1,15 @@
 package lpx2hue;
 
 
+import lpx2hue.beans.MidiSettings;
 import lpx2hue.handlers.Lpx2HueEventHandler;
 import lpx2hue.iodevice.MidiDevice;
 import lpx2hue.iodevice.MidiInput;
 import lpx2hue.iodevice.MidiInputDevice;
 import lpx2hue.iodevice.MidiOutputDevice;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
 
@@ -23,7 +27,8 @@ import static java.lang.Thread.sleep;
  *
  */
 public class Lpx2HueMain {
-	/**
+
+    /**
 	 *
 	 * @return the list of the available input devices.
 	 */
@@ -123,15 +128,22 @@ public class Lpx2HueMain {
 
 	public static void main(String args[]) throws InterruptedException {
 
+
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+
+
+		MidiSettings ms = (MidiSettings) context.getBean("MidiSettings");
+
         System.out.println("LPX2HUE Midi Bridge startup...");
         System.out.println("List of all MidiSystem Input & Output Devices:");
+        System.out.println("Bind to device: " + ms.getInput());
 
 		int i = 0;
         MidiInputDevice selectedInputDevice = null;
 
 		for (MidiInputDevice device : getInputDevices()) {
 			System.out.println("- input device " + i + ": "  + device);
-			if (device.getName().contains("LPX2HUE_MB"))
+			if (device.getName().contains(ms.getInput()))
 				 selectedInputDevice = device;
 			i++;
 		}
