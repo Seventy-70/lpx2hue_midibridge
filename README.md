@@ -47,9 +47,10 @@ To manually load the deamon
 
 To check the deamon is loaded
 - from console: 'launchctl list | grep lpx', this should output something like:
-$ launchctl list | grep lpx
-4784	0	lpx2hue.Lpx2HueBridge
-$
+
+-  $ launchctl list | grep lpx
+-  4784	0	lpx2hue.Lpx2HueBridge
+-  $
 
 
 - ... more steps to follow
