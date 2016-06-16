@@ -1,9 +1,13 @@
 package lpx2hue.handlers;
 
+import lpx2hue.beans.HueSettings;
+import lpx2hue.beans.RecordingLightSettings;
 import lpx2hue.events.ControlChange;
 import lpx2hue.events.Note;
 import lpx2hue.events.SysexMessage;
 import lpx2hue.hue.HueBridgeController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 /**
  * Created by nijhora1 on 15/06/16.
@@ -11,7 +15,12 @@ import lpx2hue.hue.HueBridgeController;
 public class Lpx2HueEventHandler {
     boolean recordLightOn = false;
 
-    public Lpx2HueEventHandler() {}
+    private ApplicationContext context;
+
+    @Autowired
+    public Lpx2HueEventHandler(ApplicationContext ctx) {
+        context = ctx;
+    }
 
     public void noteOnReceived(Note note) {
         boolean recordLightTrigger = false;
@@ -27,10 +36,10 @@ public class Lpx2HueEventHandler {
         try {
             if (recordLightTrigger && recordLightOn) {
                 System.out.println("Received RECORDING LIGHT ON from LPX ...");
-                (new HueBridgeController()).switchOnHueLight();
+                (new HueBridgeController(context.getBean(HueSettings.class),context.getBean(RecordingLightSettings.class))).switchOnHueLight();
             } else if (recordLightTrigger && !recordLightOn) {
                 System.out.println("Received RECORDING LIGHT OFF from LPX ...");
-                (new HueBridgeController()).switchOffHueLight();
+                (new HueBridgeController(context.getBean(HueSettings.class),context.getBean(RecordingLightSettings.class))).switchOffHueLight();
             }
         } catch (Exception e){
             e.printStackTrace();

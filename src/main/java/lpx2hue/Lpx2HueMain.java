@@ -1,7 +1,9 @@
 package lpx2hue;
 
 
+import lpx2hue.beans.HueSettings;
 import lpx2hue.beans.MidiSettings;
+import lpx2hue.beans.RecordingLightSettings;
 import lpx2hue.handlers.Lpx2HueEventHandler;
 import lpx2hue.iodevice.MidiDevice;
 import lpx2hue.iodevice.MidiInput;
@@ -9,6 +11,10 @@ import lpx2hue.iodevice.MidiInputDevice;
 import lpx2hue.iodevice.MidiOutputDevice;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
@@ -26,6 +32,10 @@ import static java.lang.Thread.sleep;
  * on the returned objects to open an input or output midi port.
  *
  */
+
+@Configuration
+@PropertySource("classpath:application.properties")
+@ComponentScan
 public class Lpx2HueMain {
 
     /**
@@ -128,16 +138,12 @@ public class Lpx2HueMain {
 
 	public static void main(String args[]) throws InterruptedException {
 
-
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-
-
-		MidiSettings ms = (MidiSettings) context.getBean("MidiSettings");
-
         System.out.println("LPX2HUE Midi Bridge startup...");
         System.out.println("List of all MidiSystem Input & Output Devices:");
-        System.out.println("Bind to device: " + ms.getInput());
 
+		ApplicationContext context = new AnnotationConfigApplicationContext(Lpx2HueMain.class);
+//		final ApplicationContext context = new ClassPathXmlApplicationContext("application.properties");
+		MidiSettings ms = context.getBean(MidiSettings.class);
 		int i = 0;
         MidiInputDevice selectedInputDevice = null;
 
@@ -148,28 +154,20 @@ public class Lpx2HueMain {
 			i++;
 		}
 
-		i = 0;
-		for (MidiDevice device : getOutputDevices()) {
-			System.out.println("- output device " + i + ": " + device);
-			i++;
-		}
-
         System.out.println("Setting up midi event handler for LPX2HUE Midi Bridge...");
         if (selectedInputDevice!=null){
-            Lpx2HueEventHandler handler = new Lpx2HueEventHandler();
+            Lpx2HueEventHandler handler = new Lpx2HueEventHandler(context);
             MidiInput input = selectedInputDevice.createInput(handler);
 
             JFrame frame = new JFrame();
             System.out.println("LPX2HUE Midi Bridge startup completed. Listening to events...");
 
-            // do something to hold the program
-            // TODO: make program deamon
             while(true){
                 sleep(10000);
             }
 
         } else {
-            System.out.println("Failed to connect to midi input device with name: 'LPX2HUE_MB'. Please check your Midi Studio IAC driver setup." );
+            System.out.println("Failed to connect to midi input device with name: "+ ms.getInput()+". Please check your Midi Studio IAC driver setup." );
             exit(0);
         }
 	}

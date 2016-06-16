@@ -1,62 +1,85 @@
 package lpx2hue.beans;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+
 /**
+ *
+ *
+ recordinglight.on.hue=6
+ recordinglight.on.bri=2
+ recordinglight.on.sat=2
+ recordinglight.off.hue=
+ recordinglight.off.bri=
+ recordinglight.off.sat=
+
  * Created by nijhora1 on 15/06/16.
  */
+@Configuration
+@PropertySource("classpath:application.properties")
+@Component
 public class RecordingLightSettings {
-    private int onHue;
-    private int onBri;
-    private int onSat;
+    @Value("${recordinglight.on.hue}")
+    private String onHue;
+    @Value("${recordinglight.on.bri}")
+    private String onBri;
+    @Value("${recordinglight.on.sat}")
+    private String onSat;
 
-    private int offHue;
-    private int offBri;
-    private int offSat;
+    @Value("${recordinglight.off.hue}")
+    private String offHue;
+    @Value("${recordinglight.off.bri}")
+    private String offBri;
+    @Value("${recordinglight.off.sat}")
+    private String offSat;
 
-    public int getOnHue() {
+    public String getOnHue() {
         return onHue;
     }
 
-    public void setOnHue(int onHue) {
+    public void setOnHue(String onHue) {
         this.onHue = onHue;
     }
 
-    public int getOnBri() {
+    public String getOnBri() {
         return onBri;
     }
 
-    public void setOnBri(int onBri) {
+    public void setOnBri(String onBri) {
         this.onBri = onBri;
     }
 
-    public int getOnSat() {
+    public String getOnSat() {
         return onSat;
     }
 
-    public void setOnSat(int onSat) {
+    public void setOnSat(String onSat) {
         this.onSat = onSat;
     }
 
-    public int getOffHue() {
+    public String getOffHue() {
         return offHue;
     }
 
-    public void setOffHue(int offHue) {
+    public void setOffHue(String offHue) {
         this.offHue = offHue;
     }
 
-    public int getOffBri() {
+    public String getOffBri() {
         return offBri;
     }
 
-    public void setOffBri(int offBri) {
+    public void setOffBri(String offBri) {
         this.offBri = offBri;
     }
 
-    public int getOffSat() {
+    public String getOffSat() {
         return offSat;
     }
 
-    public void setOffSat(int offSat) {
+    public void setOffSat(String offSat) {
         this.offSat = offSat;
     }
 }

@@ -9,29 +9,28 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
 /**
  * Created by nijhora1 on 15/06/16.
  */
-
+@Component
 public class HueBridgeController {
 
     private HueSettings hs;
     private RecordingLightSettings rls;
     private String lightResource;
 
-
     private ApplicationContext context;
 
-    public HueBridgeController(){
-        hs = ApplicationContextProvider.getApplicationContext().getBean("HueSettings", HueSettings.class);
-        rls = ApplicationContextProvider.getApplicationContext().getBean("RecordingLightSettings", RecordingLightSettings.class);
+    @Autowired
+    public HueBridgeController(HueSettings hueSettings, RecordingLightSettings recordingLightSettings){
+        hs = hueSettings;
+        rls = recordingLightSettings;
         lightResource = hs.getBridgeAddress()+hs.getUser()+hs.getLight();
     }
 
