@@ -32,9 +32,9 @@ Validated on Mac OSX 10.11.5 El Capitan, and with Logic Pro X 10.2.3, and Philip
 - copy 2 files: "**.jar", "application.properties" from 'dist' folder into 'lpx2hue' folder
 - copy 'lpx2hue.Lpx2HueBridge.plist' file into '~/Library/LaunchAgents' folder
 
-## 4) configure 'application.properties' within 'lpx2hue' folder
+## 4) configure 'application.properties'
 
-## 5) confiure 'lpx2hue.Lpx2HueBridge.plist' within '~/Library/LaunchAgents' folder
+## 5) configure 'lpx2hue.Lpx2HueBridge.plist'
 
 ## 6) load application deamon
 When restarting macbook, the service deamon should start automatically
