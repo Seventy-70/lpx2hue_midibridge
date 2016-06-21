@@ -12,8 +12,13 @@ import javax.sound.midi.Transmitter;
 
 /**
  * Represents a MIDI input used to receive MIDI data. This can be either a physical MIDI Input or a virtual device
+<<<<<<< HEAD
  * like the Java Sequencer. Open a MidiInput by using  MidiInputDevice-createInput, and use the MidiInput-plug-Object method
  * to register callbacks to your objects. Use MidiInput-close to clear the callback list, and use MidiInput-closeMidi
+=======
+ * like the Java Sequencer. Open a MidiInput by using {@link MidiInputDevice-createInput}, and use the {@link MidiInput-plug-Object} method
+ * to register callbacks to your objects. Use {@link MidiInput-close} to clear the callback list, and use {@link MidiInput-closeMidi}
+>>>>>>> 47c4a8db3cb7206d0ed258485160ff50a73251e7
  * to close the corresponding MidiDevice (however, this will close all MidiInputs connected to this device).
  */
 public class MidiInput implements Receiver {

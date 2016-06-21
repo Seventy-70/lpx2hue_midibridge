@@ -35,6 +35,35 @@ Validated on Mac OSX 10.11.5 El Capitan, and with Logic Pro X 10.2.3, and Philip
   - specify HUE user
   - define control lights / groups
 
+## 4) Install lpx2hue bridge as OSX deamon
+- create 'lpx2hue' app folder in ~ (user home)
+- copy 2 files: "**.jar", "application.properties" from 'dist' folder into 'lpx2hue' folder
+- copy 'lpx2hue.Lpx2HueBridge.plist' file into '~/Library/LaunchAgents' folder
+
+## 5) configure 'application.properties'
+
+## 6) configure 'lpx2hue.Lpx2HueBridge.plist'
+
+## 7) load application deamon
+When restarting macbook, the service deamon should start automatically
+
+To manually unload the deamon
+- from console: 'launchctl unload -w ~/Library/LaunchAgents/lpx2hue.Lpx2HueBridge.plist'
+
+To manually load the deamon
+- from console: 'launchctl load -w ~/Library/LaunchAgents/lpx2hue.Lpx2HueBridge.plist'
+
+To check the deamon is loaded
+- from console: 'launchctl list | grep lpx', this should output something like:
+
+-  $ launchctl list | grep lpx
+-  4784	0	lpx2hue.Lpx2HueBridge
+-  $
+
+
+- ... more steps to follow
+
+
 
 
 

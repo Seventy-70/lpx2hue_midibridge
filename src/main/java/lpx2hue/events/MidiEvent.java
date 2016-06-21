@@ -8,8 +8,7 @@ import javax.sound.midi.ShortMessage;
 
 /**
  * Simple wrapper around MIDI messages, used to abstract from the actual bytes and provide a
- * more symbolic representation of the MIDI data. This class is used as a superclass for
- * messages received on a MidiInput object. You don't usually have to create such objects yourself.
+ * more symbolic representation of the MIDI data. This class is used as a superclass
  */
 public class MidiEvent extends ShortMessage {
     public static final int SYSEX_START = 0xF0;

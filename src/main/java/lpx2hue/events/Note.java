@@ -3,8 +3,6 @@ package lpx2hue.events;
 import lpx2hue.events.MidiEvent;
 
 /**
- * Wrapper around Note MIDI messages. You can extract the pitch using the Note-getPitch and the velocity using
- * Note-getVelocity
  *
  */
 public class Note extends MidiEvent {

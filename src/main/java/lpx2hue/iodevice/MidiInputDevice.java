@@ -28,8 +28,6 @@ public class MidiInputDevice extends MidiDevice {
 	}
 	
 	/**
-	 * Create an input object for the device. See MidiInput-plug-Object
-	 * 
 	 * @param obj Object to be registered as callback
 	 * @return the created input
 	 */

@@ -3,8 +3,7 @@ package lpx2hue.events;
 import javax.sound.midi.ShortMessage;
 
 /**
- * Wrapper around Program Change messages. You can access the Program Change number by using the
- * ProgramChange-getNumber method.
+ * Wrapper around Program Change messages. You can access the Program Change number
  *
  */
 public class ProgramChange extends MidiEvent {
