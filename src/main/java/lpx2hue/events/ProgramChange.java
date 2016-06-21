@@ -4,7 +4,7 @@ import javax.sound.midi.ShortMessage;
 
 /**
  * Wrapper around Program Change messages. You can access the Program Change number by using the
- * {@Link ProgramChange-getNumber} method.
+ * ProgramChange-getNumber method.
  *
  */
 public class ProgramChange extends MidiEvent {

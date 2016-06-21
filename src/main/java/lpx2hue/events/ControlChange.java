@@ -2,7 +2,7 @@ package lpx2hue.events;
 
 /**
  * Represents a MIDI ControlChange Change message. The values are parsed into the CC number and the value, which
- * you can access using the methods {@Link ControlChange-getCC} and {@Link ControlChange-getValue}.
+ * you can access.
  * 
  */
 public class ControlChange extends MidiEvent {
