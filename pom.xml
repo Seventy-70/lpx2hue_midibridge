@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.woodystudio.lpx.hue</groupId>
     <artifactId>lpx2hue_midibridge</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <scm>
         <url>scm:git:git@github.com:rnijholt/lpx2hue_midibridge.git</url>
         <connection>scm:git:git@github.com:rnijholt/lpx2hue_midibridge.git</connection>
         <developerConnection>scm:git:git@github.com:rnijholt/lpx2hue_midibridge.git</developerConnection>
-      <tag>v1.0.2</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <developers>
