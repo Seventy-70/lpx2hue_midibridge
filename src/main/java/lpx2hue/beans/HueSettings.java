@@ -18,7 +18,7 @@ public class HueSettings {
     private String bridgeAddress;
     @Value("${hue.bridge.user}")
     private String user;
-    @Value("${hue.bridge.light.resource}")
+    @Value("${hue.bridge.light.id}")
     private String light;
 
     public String getBridgeAddress() {
