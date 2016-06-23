@@ -36,10 +36,16 @@ public class Lpx2HueEventHandler {
         try {
             if (recordLightTrigger && recordLightOn) {
                 System.out.println("Received RECORDING LIGHT ON from LPX ...");
-                (new HueBridgeController(context.getBean(HueSettings.class),context.getBean(RecordingLightSettings.class))).switchOnHueLight();
+                HueBridgeController controller = HueBridgeController.getInstance();
+                controller.configure(context.getBean(HueSettings.class),context.getBean(RecordingLightSettings.class));
+
+                controller.switchOnHueLight();
             } else if (recordLightTrigger && !recordLightOn) {
                 System.out.println("Received RECORDING LIGHT OFF from LPX ...");
-                (new HueBridgeController(context.getBean(HueSettings.class),context.getBean(RecordingLightSettings.class))).switchOffHueLight();
+                HueBridgeController controller = HueBridgeController.getInstance();
+                controller.configure(context.getBean(HueSettings.class),context.getBean(RecordingLightSettings.class));
+
+                controller.switchOffHueLight();
             }
         } catch (Exception e){
             e.printStackTrace();

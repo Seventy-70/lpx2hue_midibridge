@@ -1,20 +1,21 @@
 package lpx2hue.beans;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.stereotype.Component;
 
 /**
- *
- *
- recordinglight.on.hue=6
- recordinglight.on.bri=2
- recordinglight.on.sat=2
- recordinglight.off.hue=
- recordinglight.off.bri=
- recordinglight.off.sat=
-
+ * recordinglight.on.hue=6
+ * recordinglight.on.bri=2
+ * recordinglight.on.sat=2
+ * recordinglight.off.return2orig
+ * recordinglight.off.hue=
+ * recordinglight.off.bri=
+ * recordinglight.off.sat=
+ * <p>
  * Created by nijhora1 on 15/06/16.
  */
 @Configuration
@@ -28,12 +29,15 @@ public class RecordingLightSettings {
     @Value("${recordinglight.on.sat}")
     private String onSat;
 
+    @Value("${recordinglight.off.return2orig}")
+    private boolean off2Orig;
     @Value("${recordinglight.off.hue}")
     private String offHue;
     @Value("${recordinglight.off.bri}")
     private String offBri;
     @Value("${recordinglight.off.sat}")
     private String offSat;
+
 
     public String getOnHue() {
         return onHue;
@@ -57,6 +61,14 @@ public class RecordingLightSettings {
 
     public void setOnSat(String onSat) {
         this.onSat = onSat;
+    }
+
+    public boolean isOff2Orig() {
+        return off2Orig;
+    }
+
+    public void setOff2Orig(boolean off2Orig) {
+        this.off2Orig = off2Orig;
     }
 
     public String getOffHue() {

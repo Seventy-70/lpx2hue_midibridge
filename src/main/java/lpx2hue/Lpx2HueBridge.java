@@ -1,25 +1,15 @@
 package lpx2hue;
 
 
-import com.sun.media.sound.MidiOutDeviceProvider;
 import lpx2hue.beans.MidiSettings;
 import lpx2hue.handlers.Lpx2HueEventHandler;
 import lpx2hue.iodevice.MidiDeviceProxy;
 import lpx2hue.iodevice.MidiInput;
 import lpx2hue.iodevice.MidiInputDevice;
-import lpx2hue.iodevice.MidiOutputDevice;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-
-import java.util.ArrayList;
-
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.swing.JFrame;
+import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 import static java.lang.System.exit;
 import static java.lang.Thread.sleep;
@@ -36,6 +26,11 @@ import static java.lang.Thread.sleep;
 @PropertySource("classpath:application.properties")
 @ComponentScan
 public class Lpx2HueBridge {
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
 	public static void main(String args[]) throws InterruptedException {
 		System.setProperty("apple.awt.UIElement", "true");
