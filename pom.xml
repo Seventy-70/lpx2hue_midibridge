@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.woodystudio.lpx.hue</groupId>
     <artifactId>lpx2hue_midibridge</artifactId>
-    <version>1.0.8-SNAPSHOT</version>
+    <version>1.0.9-SNAPSHOT</version>
 
     <scm>
         <url>scm:git:git@github.com:rnijholt/lpx2hue_midibridge.git</url>
